@@ -182,9 +182,10 @@ class PermutationPlotScreen(QWidget, WorkflowNodeScreenSupport):
 
             ax.boxplot(
                 result.importances[sorted_idx].T,
-                vert=False,
-                labels=np.array(self._feature_names)[sorted_idx]
+                vert=False
             )
+            ax.set_yticks(range(1, len(self._feature_names) + 1))
+            ax.set_yticklabels(np.array(self._feature_names)[sorted_idx])
             
             ax.set_title("Permutation Importances")
             ax.grid(True, alpha=0.3, axis='x')
