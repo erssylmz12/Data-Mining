@@ -95,6 +95,10 @@ from portakal_app.ui.screens.save_model_screen import SaveModelScreen
 from portakal_app.ui.screens.load_model_screen import LoadModelScreen
 from portakal_app.ui.screens.confusion_matrix_screen import ConfusionMatrixScreen
 from portakal_app.ui.screens.test_and_score_screen import TestAndScoreScreen
+from portakal_app.ui.screens.roc_analysis_screen import ROCAnalysisScreen
+from portakal_app.ui.screens.performance_curve_screen import PerformanceCurveScreen
+from portakal_app.ui.screens.calibration_plot_screen import CalibrationPlotScreen
+from portakal_app.ui.screens.permutation_plot_screen import PermutationPlotScreen
 from portakal_app.widgets.unsupervised.ow_hierarchical_clustering import OWHierarchicalClustering
 from portakal_app.widgets.unsupervised.ow_kmeans import OWKMeans
 from portakal_app.widgets.unsupervised.ow_pca import OWPCA
@@ -1049,10 +1053,10 @@ def build_widgets() -> list[WidgetDefinition]:
             "evaluate",
             i18n.t("ROC Analysis"),
             True,
-            _placeholder_factory("ROC Analysis", "Not implemented yet."),
+            ROCAnalysisScreen,
             i18n.t("Receiver Operating Characteristic curve."),
             "score",
-            _inputs("Evaluation Results"),
+            _inputs("Data", "Model"),
             (),
         ),
         WidgetDefinition(
@@ -1060,10 +1064,10 @@ def build_widgets() -> list[WidgetDefinition]:
             "evaluate",
             i18n.t("Performance Curve"),
             True,
-            _placeholder_factory("Performance Curve", "Not implemented yet."),
+            PerformanceCurveScreen,
             i18n.t("Analyze performance curves."),
             "score",
-            _inputs("Evaluation Results"),
+            _inputs("Data", "Model"),
             (),
         ),
         WidgetDefinition(
@@ -1071,10 +1075,10 @@ def build_widgets() -> list[WidgetDefinition]:
             "evaluate",
             i18n.t("Calibration Plot"),
             True,
-            _placeholder_factory("Calibration Plot", "Not implemented yet."),
+            CalibrationPlotScreen,
             i18n.t("Show probability calibration plot."),
             "score",
-            _inputs("Evaluation Results"),
+            _inputs("Data", "Model"),
             (),
         ),
         WidgetDefinition(
@@ -1082,10 +1086,10 @@ def build_widgets() -> list[WidgetDefinition]:
             "evaluate",
             i18n.t("Permutation Plot"),
             True,
-            _placeholder_factory("Permutation Plot", "Not implemented yet."),
+            PermutationPlotScreen,
             i18n.t("Feature importance via permutations."),
             "score",
-            _inputs("Evaluation Results"),
+            _inputs("Data", "Model"),
             (),
         ),
         WidgetDefinition(
