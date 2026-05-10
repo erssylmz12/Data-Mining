@@ -82,9 +82,9 @@ class PermutationPlotScreen(QWidget, WorkflowNodeScreenSupport):
         if payload is None:
             self._dataset = None
             self._model = None
-        elif payload.port_label == "Data" and isinstance(payload.value, DatasetHandle):
-            self._dataset = payload.value
-        else:
+        elif payload.port_label == "Data":
+            self._dataset = payload.value if isinstance(payload.value, DatasetHandle) else None
+        elif payload.port_label == "Model":
             self._model = payload.value
         self._compute()
 
